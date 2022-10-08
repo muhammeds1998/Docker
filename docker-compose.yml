@@ -1,0 +1,24 @@
+version: "3"
+services:
+    website1:
+        image: nginx
+        ports:
+            - "82:80"
+        volumes:
+            - ./musul:/usr/share/nginx/html
+    website2:
+        image: nginx
+        ports:
+            - "83:80"
+        volumes:
+            - ./kerkuk:/usr/share/nginx/html
+    database:
+        image: mysql
+        restart: always
+        environment:
+            - MYSQL_DATABASE=veri_tabanı_adı
+            - MYSQL_ROOT_PASSWORD=root_sifresi
+            - MYSQL_USER=mysql_kullanicisi
+            - MYSQL_PASSWORD=mysql_kullanici_sifresi
+        ports:
+            - "8989:3306"
